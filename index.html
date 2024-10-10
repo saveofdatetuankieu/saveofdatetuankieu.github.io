@@ -490,13 +490,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             setInterval(function () {
                 var screenHeight = window.innerHeight;
-                var screenWidth = window.innerWidth ;
+                var screenWidth = window.innerWidth;
                 var footer = document.querySelector('footer');
-                var footerTop = footer.getBoundingClientRect().top + window.scrollY; // Get footer position relative to the viewport
+                var footerTop = footer.getBoundingClientRect().top + window.scrollY;
                 var footerHeight = footer.offsetHeight;
 
                 var startLeft = getRandomArbitrary(0, screenWidth);
-                var timeRun = getRandomArbitrary(20000, 30000);
+                var timeRun = getRandomArbitrary(15000, 30000); // Thay đổi ở đây
                 var opacityR = Math.random() * (1 - 0.2) + 0.2;
                 var sizeR = getRandomArbitrary(5, 20);
 
@@ -508,15 +508,9 @@
                 snow.style.opacity = opacityR;
                 snow.style.fontSize = sizeR + 'px';
                 snow.style.color = 'brown';
-                snow.innerHTML = '&#10084;'; // Heart symbol
-				snow.style.position = 'absolute';
-				snow.style.zIndex = '9999';
-				snow.style.display = 'block';
-				snow.style.top = 0;
-
+                snow.innerHTML = '&#10084;';
                 document.body.appendChild(snow);
 
-                // Animate the snowflake
                 snow.animate([
                     { top: '0px', left: startLeft + 'px' },
                     { top: (footerTop - sizeR) + 'px', left: endLeft + 'px' }
@@ -525,18 +519,16 @@
                     easing: 'linear',
                     fill: 'forwards'
                 }).onfinish = function () {
-                    snow.style.display = 'none'; // Hide the snowflake
-                    snow.remove(); // Remove it from the DOM
+                    snow.style.display = 'none';
+                    snow.remove();
                 };
 
-            }, 50);
+            }, 300); // Tăng khoảng thời gian giữa các lần tạo trái tim
         });
 
-        // Function to generate a random number between min and max
         function getRandomArbitrary(min, max) {
             return Math.random() * (max - min) + min;
         }
-
     </script>
 	</body>
 </html>
