@@ -81,11 +81,57 @@
 			line-height: 50px;
 		}
 
-		.snow-item {
+	.snow-item {
 				position: absolute;
 				display: block;
 				pointer-events: none; /* Prevent interaction */
 			}
+		
+			.play-button {
+				width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #df4758;
+    color: white;
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding-left: 2px; 
+        }
+        .play-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.6);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+		.bii-player{
+			bottom: 8px;
+			left: 6px;
+		}
 		
 		</style>
 
@@ -97,6 +143,15 @@
 		<div class="fh5co-loader"></div>
 		
 		<div id="page" >
+			<div class="bii-player" style="position: fixed;z-index: 9999;">
+				<div class="play-button" id="playButton">	
+					▶
+				</div>
+				
+				<audio id="audio" src="images/nhac.mp3"></audio>
+			</div>
+	
+
 		<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/bg-fi2.jpg); background-position: top center;">
 			<div class="overlay"></div>
 			<div class="container">
@@ -119,26 +174,6 @@
 				</div>
 			</div>
 		</header>
-
-		<!-- <h1>Nhấp vào nút để phát nhạc</h1>
-		<button id="playButton">Phát Nhạc</button>
-
-		<audio id="myAudio" controls>
-			<source src="images/nhac.mp3" type="audio/mpeg">
-			Trình duyệt của bạn không hỗ trợ thẻ audio.
-		</audio> -->
-	<!-- 
-		<iframe src="images/nhac.mp3" allow="autoplay" id="iframeAudio">
-		</iframe> 
-
-		<audio autoplay="true" loop="" id="audio">
-			<source src="images/nhac.mp3" type="audio/mpeg">
-		</audio>
-		<div class="audio-controls">
-			<button id="playPauseButton"><i class="fas fa-play"></i></button>
-		</div> -->
-
-
 
 		<div id="fh5co-gallery" class="fh5co-section-gray">
 			<div class="container">
@@ -360,8 +395,6 @@
 			</div>
 		</div>
 
-
-
 		<div id="fh5co-event" class="fh5co-bg">
 			<div class="overlay"></div>
 			<div class="container">
@@ -422,9 +455,6 @@
 			</div>
 		</div>
 
-
-
-
 		<div id="fh5co-services" class="fh5co-section-gray">
 			<div class="container">
 				
@@ -452,7 +482,6 @@
 				Rất Hân Hạnh Được Đón Tiếp Qúy Khách !	
 			</footer>
 			
-
 		</div>
 		<!-- <div class="gototop js-top">
 			<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
@@ -487,10 +516,27 @@
 		<script src="js/main.js"></script>
 
 		<script>
+			const playButton = document.getElementById('playButton');
+			const audio = document.getElementById('audio');
+			let isPlaying = false;
+		
+			playButton.addEventListener('click', () => {
+				if (isPlaying) {
+					audio.pause();
+					playButton.innerHTML = '▶';
+				} else {
+					audio.play();
+					playButton.innerHTML = '❚❚';
+				}
+				isPlaying = !isPlaying;
+			});
+		</script>
+
+		<script>
 			document.addEventListener('DOMContentLoaded', function () {
 				setInterval(function () {
-					var screenHeight = window.innerHeight - 15;
-					var screenWidth = window.innerWidth - 15;
+					var screenHeight = window.innerHeight - 40;
+					var screenWidth = window.innerWidth - 18;
 					var footer = document.querySelector('footer');
 					var footerTop = footer.getBoundingClientRect().top + window.scrollY;
 					var footerHeight = footer.offsetHeight;
