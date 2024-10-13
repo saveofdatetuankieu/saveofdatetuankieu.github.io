@@ -441,23 +441,23 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-counter .event-wrap h3,
 #fh5co-event .event-wrap h3 {
-  font-size: 14px;
+  font-size: 18px;
   color: #000000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   display: block;
   padding-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: Sofia Sans Condensed;
-  font-size: 25px;
+  /* font-family: Sofia Sans Condensed;
+  font-size: 25px; */
 }
 #fh5co-counter .event-wrap p, #fh5co-counter .event-wrap span,
 #fh5co-event .event-wrap p,
 #fh5co-event .event-wrap span {
   display: block;
   color: rgba(0, 0, 0, 0.8);
-  font-family: Sofia Sans Condensed;
-  font-size: 20px;
+  /* //font-family: Sofia Sans Condensed; */
+  font-size: 18px;
 }
 #fh5co-counter .event-wrap i,
 #fh5co-event .event-wrap i {
@@ -468,7 +468,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-event .event-wrap .event-col {
   width: 50%;
   float: left;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
 #fh5co-counter {
